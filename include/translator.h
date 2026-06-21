@@ -18,5 +18,11 @@ void translate_spi_to_uart(
 void translate_i2c_to_uart(
     Packet *packet
 );
+void translate_can_to_uart(
+    Packet *packet
+);
+void translate_modbus_to_uart(
+    Packet *packet
+);
 
 #endif

@@ -2,6 +2,7 @@
 
 #include "gateway.h"
 #include "packet.h"
+#include "diagnostics.h"
 
 void gateway_init(
     Gateway *gateway
@@ -22,7 +23,9 @@ void gateway_route_packet(
     gateway->packets_received++;
 
     if(
-        !packet_validate(packet)
+        !packet_validate(
+            packet
+        )
     )
     {
         gateway->packets_dropped++;
@@ -78,6 +81,7 @@ void gateway_print_stats(
         "========================================\n"
     );
 }
+
 void gateway_dashboard(
     Gateway *gateway,
     Diagnostics *diag
@@ -129,6 +133,52 @@ void gateway_dashboard(
         "Device Timeouts  : %d\n",
         diag->device_timeouts
     );
+
+    printf(
+        "Success Rate     : %.2f %%\n",
+        diag->packet_success_rate
+    );
+
+    printf(
+        "Loss Rate        : %.2f %%\n",
+        diag->packet_loss_rate
+    );
+
+    printf(
+        "Gateway Health   : %.2f %%\n",
+        diag->gateway_health
+    );
+
+    printf(
+        "========================================\n"
+    );
+
+    printf(
+        "Gateway Status : "
+    );
+
+    if(
+        diag->gateway_health >= 90
+    )
+    {
+        printf(
+            "HEALTHY\n"
+        );
+    }
+    else if(
+        diag->gateway_health >= 70
+    )
+    {
+        printf(
+            "WARNING\n"
+        );
+    }
+    else
+    {
+        printf(
+            "CRITICAL\n"
+        );
+    }
 
     printf(
         "========================================\n"

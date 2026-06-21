@@ -1,0 +1,1147 @@
+[UART] Initialized
+[SPI] Initialized
+[I2C] Initialized
+[CAN] Initialized
+[MQTT] Initialized
+
+[TASK] Running TemperatureTask
+
+[TEMPERATURE] Value: 15.00 State: ACTIVE
+[UART] TX -> Device:1 Protocol:1 Length:1
+
+[TASK] Running PressureTask
+
+[PRESSURE] Value: 65.00 State: ACTIVE
+[I2C] Write -> Device:2 Protocol:2 Length:1
+
+[TASK] Running BatteryTask
+
+[BATTERY] Value: 22.00 State: ACTIVE
+[SPI] Transfer -> Device:3 Protocol:3 Length:1
+
+[TASK] Running EngineTask
+
+[ENGINE ECU] Value: 87.00 State: RECOVERY
+[CAN] TX -> Device:4 Protocol:4 Length:1
+
+[TASK] Running GatewayTask
+
+[GATEWAY] Packet Routed
+Device ID : 1
+Protocol  : 1
+[LOG] INFO : Packet Routed
+[MQTT] Publish -> Device:1 Protocol:1 Length:1
+[TRANSLATOR] UART -> SPI
+[FAULT] CRC Corrupted
+[LOG] ERROR : CRC Error
+[GATEWAY] Packet Dropped
+[LOG] ERROR : Packet Dropped
+
+[GATEWAY] Packet Routed
+Device ID : 3
+Protocol  : 3
+[LOG] INFO : Packet Routed
+[MQTT] Publish -> Device:3 Protocol:3 Length:1
+[TRANSLATOR] SPI -> UART
+
+[GATEWAY] Packet Routed
+Device ID : 4
+Protocol  : 4
+[LOG] INFO : Packet Routed
+[MQTT] Publish -> Device:4 Protocol:4 Length:1
+[TRANSLATOR] CAN -> UART
+
+[TASK] Running DiagnosticsTask
+
+===== Diagnostics =====
+Packets Processed : 4
+Packets Dropped   : 1
+CRC Errors        : 1
+Device Errors     : 0
+Device Timeouts   : 0
+Packet Loss       : 1
+Success Rate      : 75.00 %
+Loss Rate         : 25.00 %
+Gateway Health    : 75.00 %
+Reliability Score : 75.00 %
+Failure Probability : 25.00 %
+Average Health    : 97.50 %
+Trend             : DEGRADING
+Failure State     : WARNING
+
+========================================
+         GATEWAY DASHBOARD
+========================================
+Packets Received : 3
+Packets Routed   : 3
+Packets Dropped  : 1
+CRC Errors       : 1
+Packet Loss      : 1
+Device Errors    : 0
+Device Timeouts  : 0
+Success Rate     : 75.00 %
+Loss Rate        : 25.00 %
+Gateway Health   : 75.00 %
+========================================
+Gateway Status : WARNING
+========================================
+
+===== Device Table =====
+ID	NAME		PACKETS
+1	Temperature		1
+2	Pressure		0
+3	Battery		1
+4	Engine ECU		1
+
+===== ML Anomaly Engine =====
+Health Z-score      : 0.00
+Loss Z-score        : 0.00
+CRC Z-score         : 0.00
+Timeout Z-score     : 0.00
+Device Error Z      : 0.00
+Anomaly Score       : 0.00
+Anomaly Count       : 0
+
+===== Isolation Forest =====
+Score          : 0.0200
+Anomaly Count  : 0
+
+[TASK] Running PLCTask
+[MODBUS] TX -> Device:5 Protocol:5 Length:1
+
+[TASK] Running TemperatureTask
+
+[TEMPERATURE] Value: 88.00 State: RECOVERY
+[UART] TX -> Device:1 Protocol:1 Length:1
+
+[TASK] Running PressureTask
+
+[PRESSURE] Value: 46.00 State: ACTIVE
+[I2C] Write -> Device:2 Protocol:2 Length:1
+
+[TASK] Running BatteryTask
+
+[BATTERY] Value: 89.00 State: RECOVERY
+[SPI] Transfer -> Device:3 Protocol:3 Length:1
+
+[TASK] Running EngineTask
+
+[ENGINE ECU] Value: 22.00 State: ACTIVE
+[CAN] TX -> Device:4 Protocol:4 Length:1
+
+[TASK] Running GatewayTask
+
+[GATEWAY] Packet Routed
+Device ID : 5
+Protocol  : 5
+[LOG] INFO : Packet Routed
+[MQTT] Publish -> Device:5 Protocol:5 Length:1
+[TRANSLATOR] MODBUS -> UART
+
+[GATEWAY] Packet Routed
+Device ID : 1
+Protocol  : 1
+[LOG] INFO : Packet Routed
+[MQTT] Publish -> Device:1 Protocol:1 Length:1
+[TRANSLATOR] UART -> SPI
+
+[GATEWAY] Packet Routed
+Device ID : 2
+Protocol  : 2
+[LOG] INFO : Packet Routed
+[MQTT] Publish -> Device:2 Protocol:2 Length:1
+[TRANSLATOR] I2C -> UART
+
+[GATEWAY] Packet Routed
+Device ID : 3
+Protocol  : 3
+[LOG] INFO : Packet Routed
+[MQTT] Publish -> Device:3 Protocol:3 Length:1
+[TRANSLATOR] SPI -> UART
+
+[GATEWAY] Packet Routed
+Device ID : 4
+Protocol  : 4
+[LOG] INFO : Packet Routed
+[MQTT] Publish -> Device:4 Protocol:4 Length:1
+[TRANSLATOR] CAN -> UART
+
+[TASK] Running DiagnosticsTask
+
+===== Diagnostics =====
+Packets Processed : 9
+Packets Dropped   : 1
+CRC Errors        : 1
+Device Errors     : 0
+Device Timeouts   : 0
+Packet Loss       : 1
+Success Rate      : 88.89 %
+Loss Rate         : 11.11 %
+Gateway Health    : 88.89 %
+Reliability Score : 88.89 %
+Failure Probability : 11.11 %
+Average Health    : 96.39 %
+Trend             : DEGRADING
+Failure State     : NORMAL
+
+========================================
+         GATEWAY DASHBOARD
+========================================
+Packets Received : 8
+Packets Routed   : 8
+Packets Dropped  : 1
+CRC Errors       : 1
+Packet Loss      : 1
+Device Errors    : 0
+Device Timeouts  : 0
+Success Rate     : 88.89 %
+Loss Rate        : 11.11 %
+Gateway Health   : 88.89 %
+========================================
+Gateway Status : WARNING
+========================================
+
+===== Device Table =====
+ID	NAME		PACKETS
+1	Temperature		2
+2	Pressure		1
+3	Battery		2
+4	Engine ECU		2
+
+===== ML Anomaly Engine =====
+Health Z-score      : 0.00
+Loss Z-score        : 0.00
+CRC Z-score         : 0.00
+Timeout Z-score     : 0.00
+Device Error Z      : 0.00
+Anomaly Score       : 0.00
+Anomaly Count       : 0
+
+===== Isolation Forest =====
+Score          : 0.2144
+Anomaly Count  : 0
+
+[TASK] Running PLCTask
+[MODBUS] TX -> Device:5 Protocol:5 Length:1
+
+[TASK] Running TemperatureTask
+
+[TEMPERATURE] Value: 76.00 State: RECOVERY
+[UART] TX -> Device:1 Protocol:1 Length:1
+
+[TASK] Running PressureTask
+
+[PRESSURE] Value: 32.00 State: ACTIVE
+[I2C] Write -> Device:2 Protocol:2 Length:1
+
+[TASK] Running BatteryTask
+
+[BATTERY] Value: 3.00 State: IDLE
+[SPI] Transfer -> Device:3 Protocol:3 Length:1
+
+[TASK] Running EngineTask
+
+[ENGINE ECU] Value: 18.00 State: ACTIVE
+[CAN] TX -> Device:4 Protocol:4 Length:1
+
+[TASK] Running GatewayTask
+
+[GATEWAY] Packet Routed
+Device ID : 5
+Protocol  : 5
+[LOG] INFO : Packet Routed
+[MQTT] Publish -> Device:5 Protocol:5 Length:1
+[TRANSLATOR] MODBUS -> UART
+
+[GATEWAY] Packet Routed
+Device ID : 1
+Protocol  : 1
+[LOG] INFO : Packet Routed
+[MQTT] Publish -> Device:1 Protocol:1 Length:1
+[TRANSLATOR] UART -> SPI
+
+[GATEWAY] Packet Routed
+Device ID : 2
+Protocol  : 2
+[LOG] INFO : Packet Routed
+[MQTT] Publish -> Device:2 Protocol:2 Length:1
+[TRANSLATOR] I2C -> UART
+
+[GATEWAY] Packet Routed
+Device ID : 3
+Protocol  : 3
+[LOG] INFO : Packet Routed
+[MQTT] Publish -> Device:3 Protocol:3 Length:1
+[TRANSLATOR] SPI -> UART
+
+[GATEWAY] Packet Routed
+Device ID : 4
+Protocol  : 4
+[LOG] INFO : Packet Routed
+[MQTT] Publish -> Device:4 Protocol:4 Length:1
+[TRANSLATOR] CAN -> UART
+
+[TASK] Running DiagnosticsTask
+
+===== Diagnostics =====
+Packets Processed : 14
+Packets Dropped   : 1
+CRC Errors        : 1
+Device Errors     : 0
+Device Timeouts   : 0
+Packet Loss       : 1
+Success Rate      : 92.86 %
+Loss Rate         : 7.14 %
+Gateway Health    : 92.86 %
+Reliability Score : 92.86 %
+Failure Probability : 7.14 %
+Average Health    : 95.67 %
+Trend             : DEGRADING
+Failure State     : NORMAL
+
+========================================
+         GATEWAY DASHBOARD
+========================================
+Packets Received : 13
+Packets Routed   : 13
+Packets Dropped  : 1
+CRC Errors       : 1
+Packet Loss      : 1
+Device Errors    : 0
+Device Timeouts  : 0
+Success Rate     : 92.86 %
+Loss Rate        : 7.14 %
+Gateway Health   : 92.86 %
+========================================
+Gateway Status : HEALTHY
+========================================
+
+===== Device Table =====
+ID	NAME		PACKETS
+1	Temperature		3
+2	Pressure		2
+3	Battery		3
+4	Engine ECU		3
+
+===== ML Anomaly Engine =====
+Health Z-score      : 0.00
+Loss Z-score        : 0.00
+CRC Z-score         : 0.00
+Timeout Z-score     : 0.00
+Device Error Z      : 0.00
+Anomaly Score       : 0.00
+Anomaly Count       : 0
+
+===== Isolation Forest =====
+Score          : 0.2700
+Anomaly Count  : 0
+
+[TASK] Running PLCTask
+[MODBUS] TX -> Device:5 Protocol:5 Length:1
+
+[TASK] Running TemperatureTask
+
+[TEMPERATURE] Value: 40.00 State: ACTIVE
+[UART] TX -> Device:1 Protocol:1 Length:1
+
+[TASK] Running PressureTask
+
+[PRESSURE] Value: 71.00 State: RECOVERY
+[I2C] Write -> Device:2 Protocol:2 Length:1
+
+[TASK] Running BatteryTask
+
+[BATTERY] Value: 44.00 State: ACTIVE
+[SPI] Transfer -> Device:3 Protocol:3 Length:1
+
+[TASK] Running EngineTask
+
+[ENGINE ECU] Value: 75.00 State: RECOVERY
+[CAN] TX -> Device:4 Protocol:4 Length:1
+
+[TASK] Running GatewayTask
+
+[GATEWAY] Packet Routed
+Device ID : 5
+Protocol  : 5
+[LOG] INFO : Packet Routed
+[MQTT] Publish -> Device:5 Protocol:5 Length:1
+[TRANSLATOR] MODBUS -> UART
+
+[GATEWAY] Packet Routed
+Device ID : 1
+Protocol  : 1
+[LOG] INFO : Packet Routed
+[MQTT] Publish -> Device:1 Protocol:1 Length:1
+[TRANSLATOR] UART -> SPI
+
+[GATEWAY] Packet Routed
+Device ID : 2
+Protocol  : 2
+[LOG] INFO : Packet Routed
+[MQTT] Publish -> Device:2 Protocol:2 Length:1
+[TRANSLATOR] I2C -> UART
+
+[GATEWAY] Packet Routed
+Device ID : 3
+Protocol  : 3
+[LOG] INFO : Packet Routed
+[MQTT] Publish -> Device:3 Protocol:3 Length:1
+[TRANSLATOR] SPI -> UART
+[FAULT] CRC Corrupted
+[LOG] ERROR : CRC Error
+[GATEWAY] Packet Dropped
+[LOG] ERROR : Packet Dropped
+
+[TASK] Running DiagnosticsTask
+
+===== Diagnostics =====
+Packets Processed : 19
+Packets Dropped   : 2
+CRC Errors        : 2
+Device Errors     : 0
+Device Timeouts   : 0
+Packet Loss       : 2
+Success Rate      : 89.47 %
+Loss Rate         : 10.53 %
+Gateway Health    : 89.47 %
+Reliability Score : 89.47 %
+Failure Probability : 10.53 %
+Average Health    : 94.62 %
+Trend             : DEGRADING
+Failure State     : NORMAL
+
+========================================
+         GATEWAY DASHBOARD
+========================================
+Packets Received : 17
+Packets Routed   : 17
+Packets Dropped  : 2
+CRC Errors       : 2
+Packet Loss      : 2
+Device Errors    : 0
+Device Timeouts  : 0
+Success Rate     : 89.47 %
+Loss Rate        : 10.53 %
+Gateway Health   : 89.47 %
+========================================
+Gateway Status : WARNING
+========================================
+
+===== Device Table =====
+ID	NAME		PACKETS
+1	Temperature		4
+2	Pressure		3
+3	Battery		4
+4	Engine ECU		3
+
+===== ML Anomaly Engine =====
+Health Z-score      : 0.51
+Loss Z-score        : -0.51
+CRC Z-score         : 0.00
+Timeout Z-score     : 0.00
+Device Error Z      : 0.00
+Anomaly Score       : 1.02
+Anomaly Count       : 0
+
+===== Isolation Forest =====
+Score          : 0.1926
+Anomaly Count  : 0
+
+[TASK] Running PLCTask
+[MODBUS] TX -> Device:5 Protocol:5 Length:1
+
+[TASK] Running TemperatureTask
+[TIMEOUT] Temperature Device
+
+[TEMPERATURE] Value: 84.00 State: RECOVERY
+[UART] TX -> Device:1 Protocol:1 Length:1
+
+[TASK] Running PressureTask
+[TIMEOUT] Pressure Device
+
+[PRESSURE] Value: 20.00 State: ACTIVE
+[I2C] Write -> Device:2 Protocol:2 Length:1
+
+[TASK] Running BatteryTask
+[TIMEOUT] Battery Device
+
+[BATTERY] Value: 52.00 State: ACTIVE
+[SPI] Transfer -> Device:3 Protocol:3 Length:1
+
+[TASK] Running EngineTask
+
+[ENGINE ECU] Value: 85.00 State: RECOVERY
+[CAN] TX -> Device:4 Protocol:4 Length:1
+
+[TASK] Running GatewayTask
+
+[GATEWAY] Packet Routed
+Device ID : 5
+Protocol  : 5
+[LOG] INFO : Packet Routed
+[MQTT] Publish -> Device:5 Protocol:5 Length:1
+[TRANSLATOR] MODBUS -> UART
+
+[GATEWAY] Packet Routed
+Device ID : 1
+Protocol  : 1
+[LOG] INFO : Packet Routed
+[MQTT] Publish -> Device:1 Protocol:1 Length:1
+[TRANSLATOR] UART -> SPI
+
+[GATEWAY] Packet Routed
+Device ID : 2
+Protocol  : 2
+[LOG] INFO : Packet Routed
+[MQTT] Publish -> Device:2 Protocol:2 Length:1
+[TRANSLATOR] I2C -> UART
+
+[GATEWAY] Packet Routed
+Device ID : 3
+Protocol  : 3
+[LOG] INFO : Packet Routed
+[MQTT] Publish -> Device:3 Protocol:3 Length:1
+[TRANSLATOR] SPI -> UART
+
+[GATEWAY] Packet Routed
+Device ID : 4
+Protocol  : 4
+[LOG] INFO : Packet Routed
+[MQTT] Publish -> Device:4 Protocol:4 Length:1
+[TRANSLATOR] CAN -> UART
+
+[TASK] Running DiagnosticsTask
+
+===== Diagnostics =====
+Packets Processed : 24
+Packets Dropped   : 2
+CRC Errors        : 2
+Device Errors     : 0
+Device Timeouts   : 3
+Packet Loss       : 2
+Success Rate      : 91.67 %
+Loss Rate         : 8.33 %
+Gateway Health    : 88.67 %
+Reliability Score : 88.67 %
+Failure Probability : 11.33 %
+Average Health    : 93.49 %
+Trend             : DEGRADING
+Failure State     : NORMAL
+
+========================================
+         GATEWAY DASHBOARD
+========================================
+Packets Received : 22
+Packets Routed   : 22
+Packets Dropped  : 2
+CRC Errors       : 2
+Packet Loss      : 2
+Device Errors    : 0
+Device Timeouts  : 3
+Success Rate     : 91.67 %
+Loss Rate        : 8.33 %
+Gateway Health   : 88.67 %
+========================================
+Gateway Status : WARNING
+========================================
+
+===== Device Table =====
+ID	NAME		PACKETS
+1	Temperature		5
+2	Pressure		4
+3	Battery		5
+4	Engine ECU		4
+
+===== ML Anomaly Engine =====
+Health Z-score      : 0.31
+Loss Z-score        : -0.75
+CRC Z-score         : 1.73
+Timeout Z-score     : 0.00
+Device Error Z      : 0.00
+Anomaly Score       : 2.79
+Anomaly Count       : 0
+
+===== Isolation Forest =====
+Score          : 0.1573
+Anomaly Count  : 0
+
+[TASK] Running PLCTask
+[MODBUS] TX -> Device:5 Protocol:5 Length:1
+
+[TASK] Running TemperatureTask
+
+[TEMPERATURE] Value: 36.00 State: ACTIVE
+[UART] TX -> Device:1 Protocol:1 Length:1
+
+[TASK] Running PressureTask
+
+[PRESSURE] Value: 47.00 State: ACTIVE
+[I2C] Write -> Device:2 Protocol:2 Length:1
+
+[TASK] Running BatteryTask
+[LOG] ERROR : Device Error Detected
+
+[BATTERY] Value: 98.00 State: ERROR
+[SPI] Transfer -> Device:3 Protocol:3 Length:1
+
+[TASK] Running EngineTask
+
+[ENGINE ECU] Value: 66.00 State: ACTIVE
+[CAN] TX -> Device:4 Protocol:4 Length:1
+
+[TASK] Running GatewayTask
+
+[GATEWAY] Packet Routed
+Device ID : 5
+Protocol  : 5
+[LOG] INFO : Packet Routed
+[MQTT] Publish -> Device:5 Protocol:5 Length:1
+[TRANSLATOR] MODBUS -> UART
+
+[GATEWAY] Packet Routed
+Device ID : 1
+Protocol  : 1
+[LOG] INFO : Packet Routed
+[MQTT] Publish -> Device:1 Protocol:1 Length:1
+[TRANSLATOR] UART -> SPI
+
+[GATEWAY] Packet Routed
+Device ID : 2
+Protocol  : 2
+[LOG] INFO : Packet Routed
+[MQTT] Publish -> Device:2 Protocol:2 Length:1
+[TRANSLATOR] I2C -> UART
+[FAULT] CRC Corrupted
+[LOG] ERROR : CRC Error
+[GATEWAY] Packet Dropped
+[LOG] ERROR : Packet Dropped
+
+[GATEWAY] Packet Routed
+Device ID : 4
+Protocol  : 4
+[LOG] INFO : Packet Routed
+[MQTT] Publish -> Device:4 Protocol:4 Length:1
+[TRANSLATOR] CAN -> UART
+
+[TASK] Running DiagnosticsTask
+
+===== Diagnostics =====
+Packets Processed : 29
+Packets Dropped   : 3
+CRC Errors        : 3
+Device Errors     : 1
+Device Timeouts   : 3
+Packet Loss       : 3
+Success Rate      : 89.66 %
+Loss Rate         : 10.34 %
+Gateway Health    : 85.66 %
+Reliability Score : 85.66 %
+Failure Probability : 14.34 %
+Average Health    : 92.05 %
+Trend             : DEGRADING
+Failure State     : NORMAL
+
+========================================
+         GATEWAY DASHBOARD
+========================================
+Packets Received : 26
+Packets Routed   : 26
+Packets Dropped  : 3
+CRC Errors       : 3
+Packet Loss      : 3
+Device Errors    : 1
+Device Timeouts  : 3
+Success Rate     : 89.66 %
+Loss Rate        : 10.34 %
+Gateway Health   : 85.66 %
+========================================
+Gateway Status : WARNING
+========================================
+
+===== Device Table =====
+ID	NAME		PACKETS
+1	Temperature		6
+2	Pressure		5
+3	Battery		5
+4	Engine ECU		5
+
+===== ML Anomaly Engine =====
+Health Z-score      : -0.21
+Loss Z-score        : -0.32
+CRC Z-score         : 3.27
+Timeout Z-score     : 2.00
+Device Error Z      : 0.00
+Anomaly Score       : 5.80
+Anomaly Count       : 0
+
+===== Isolation Forest =====
+Score          : 0.0772
+Anomaly Count  : 0
+
+[TASK] Running PLCTask
+[MODBUS] TX -> Device:5 Protocol:5 Length:1
+
+[TASK] Running TemperatureTask
+
+[TEMPERATURE] Value: 27.00 State: ACTIVE
+[UART] TX -> Device:1 Protocol:1 Length:1
+
+[TASK] Running PressureTask
+[LOG] ERROR : Device Error Detected
+
+[PRESSURE] Value: 99.00 State: ERROR
+[I2C] Write -> Device:2 Protocol:2 Length:1
+
+[TASK] Running BatteryTask
+
+[BATTERY] Value: 61.00 State: ACTIVE
+[SPI] Transfer -> Device:3 Protocol:3 Length:1
+
+[TASK] Running EngineTask
+
+[ENGINE ECU] Value: 43.00 State: ACTIVE
+[CAN] TX -> Device:4 Protocol:4 Length:1
+
+[TASK] Running GatewayTask
+
+[GATEWAY] Packet Routed
+Device ID : 5
+Protocol  : 5
+[LOG] INFO : Packet Routed
+[MQTT] Publish -> Device:5 Protocol:5 Length:1
+[TRANSLATOR] MODBUS -> UART
+
+[GATEWAY] Packet Routed
+Device ID : 1
+Protocol  : 1
+[LOG] INFO : Packet Routed
+[MQTT] Publish -> Device:1 Protocol:1 Length:1
+[TRANSLATOR] UART -> SPI
+
+[GATEWAY] Packet Routed
+Device ID : 2
+Protocol  : 2
+[LOG] INFO : Packet Routed
+[MQTT] Publish -> Device:2 Protocol:2 Length:1
+[TRANSLATOR] I2C -> UART
+
+[GATEWAY] Packet Routed
+Device ID : 3
+Protocol  : 3
+[LOG] INFO : Packet Routed
+[MQTT] Publish -> Device:3 Protocol:3 Length:1
+[TRANSLATOR] SPI -> UART
+
+[GATEWAY] Packet Routed
+Device ID : 4
+Protocol  : 4
+[LOG] INFO : Packet Routed
+[MQTT] Publish -> Device:4 Protocol:4 Length:1
+[TRANSLATOR] CAN -> UART
+
+[TASK] Running DiagnosticsTask
+
+[ML-Z] SYSTEM ANOMALY DETECTED
+
+===== Diagnostics =====
+Packets Processed : 34
+Packets Dropped   : 3
+CRC Errors        : 3
+Device Errors     : 2
+Device Timeouts   : 3
+Packet Loss       : 3
+Success Rate      : 91.18 %
+Loss Rate         : 8.82 %
+Gateway Health    : 86.18 %
+Reliability Score : 86.18 %
+Failure Probability : 13.82 %
+Average Health    : 90.67 %
+Trend             : DEGRADING
+Failure State     : NORMAL
+
+========================================
+         GATEWAY DASHBOARD
+========================================
+Packets Received : 31
+Packets Routed   : 31
+Packets Dropped  : 3
+CRC Errors       : 3
+Packet Loss      : 3
+Device Errors    : 2
+Device Timeouts  : 3
+Success Rate     : 91.18 %
+Loss Rate        : 8.82 %
+Gateway Health   : 86.18 %
+========================================
+Gateway Status : WARNING
+========================================
+
+===== Device Table =====
+ID	NAME		PACKETS
+1	Temperature		7
+2	Pressure		6
+3	Battery		6
+4	Engine ECU		6
+
+===== ML Anomaly Engine =====
+Health Z-score      : -0.10
+Loss Z-score        : -0.55
+CRC Z-score         : 1.79
+Timeout Z-score     : 1.41
+Device Error Z      : 4.92
+Anomaly Score       : 8.77
+Anomaly Count       : 1
+
+===== Isolation Forest =====
+Score          : 0.0765
+Anomaly Count  : 0
+
+[TASK] Running PLCTask
+[MODBUS] TX -> Device:5 Protocol:5 Length:1
+
+[TASK] Running TemperatureTask
+
+[TEMPERATURE] Value: 16.00 State: ACTIVE
+[UART] TX -> Device:1 Protocol:1 Length:1
+
+[TASK] Running PressureTask
+
+[PRESSURE] Value: 41.00 State: ACTIVE
+[I2C] Write -> Device:2 Protocol:2 Length:1
+
+[TASK] Running BatteryTask
+
+[BATTERY] Value: 50.00 State: ACTIVE
+[SPI] Transfer -> Device:3 Protocol:3 Length:1
+
+[TASK] Running EngineTask
+
+[ENGINE ECU] Value: 8.00 State: IDLE
+[CAN] TX -> Device:4 Protocol:4 Length:1
+
+[TASK] Running GatewayTask
+
+[GATEWAY] Packet Routed
+Device ID : 5
+Protocol  : 5
+[LOG] INFO : Packet Routed
+[MQTT] Publish -> Device:5 Protocol:5 Length:1
+[TRANSLATOR] MODBUS -> UART
+
+[GATEWAY] Packet Routed
+Device ID : 1
+Protocol  : 1
+[LOG] INFO : Packet Routed
+[MQTT] Publish -> Device:1 Protocol:1 Length:1
+[TRANSLATOR] UART -> SPI
+
+[GATEWAY] Packet Routed
+Device ID : 2
+Protocol  : 2
+[LOG] INFO : Packet Routed
+[MQTT] Publish -> Device:2 Protocol:2 Length:1
+[TRANSLATOR] I2C -> UART
+
+[GATEWAY] Packet Routed
+Device ID : 3
+Protocol  : 3
+[LOG] INFO : Packet Routed
+[MQTT] Publish -> Device:3 Protocol:3 Length:1
+[TRANSLATOR] SPI -> UART
+
+[GATEWAY] Packet Routed
+Device ID : 4
+Protocol  : 4
+[LOG] INFO : Packet Routed
+[MQTT] Publish -> Device:4 Protocol:4 Length:1
+[TRANSLATOR] CAN -> UART
+
+[TASK] Running DiagnosticsTask
+
+===== Diagnostics =====
+Packets Processed : 39
+Packets Dropped   : 3
+CRC Errors        : 3
+Device Errors     : 2
+Device Timeouts   : 3
+Packet Loss       : 3
+Success Rate      : 92.31 %
+Loss Rate         : 7.69 %
+Gateway Health    : 87.31 %
+Reliability Score : 87.31 %
+Failure Probability : 12.69 %
+Average Health    : 89.40 %
+Trend             : DEGRADING
+Failure State     : NORMAL
+
+========================================
+         GATEWAY DASHBOARD
+========================================
+Packets Received : 36
+Packets Routed   : 36
+Packets Dropped  : 3
+CRC Errors       : 3
+Packet Loss      : 3
+Device Errors    : 2
+Device Timeouts  : 3
+Success Rate     : 92.31 %
+Loss Rate        : 7.69 %
+Gateway Health   : 87.31 %
+========================================
+Gateway Status : WARNING
+========================================
+
+===== Device Table =====
+ID	NAME		PACKETS
+1	Temperature		8
+2	Pressure		7
+3	Battery		7
+4	Engine ECU		7
+
+===== ML Anomaly Engine =====
+Health Z-score      : 0.12
+Loss Z-score        : -0.70
+CRC Z-score         : 1.37
+Timeout Z-score     : 1.15
+Device Error Z      : 2.16
+Anomaly Score       : 5.50
+Anomaly Count       : 1
+
+===== Isolation Forest =====
+Score          : 0.0923
+Anomaly Count  : 0
+
+[TASK] Running PLCTask
+[MODBUS] TX -> Device:5 Protocol:5 Length:1
+
+[TASK] Running TemperatureTask
+
+[TEMPERATURE] Value: 62.00 State: ACTIVE
+[UART] TX -> Device:1 Protocol:1 Length:1
+
+[TASK] Running PressureTask
+
+[PRESSURE] Value: 66.00 State: ACTIVE
+[I2C] Write -> Device:2 Protocol:2 Length:1
+
+[TASK] Running BatteryTask
+[LOG] ERROR : Device Error Detected
+
+[BATTERY] Value: 95.00 State: ERROR
+[SPI] Transfer -> Device:3 Protocol:3 Length:1
+
+[TASK] Running EngineTask
+
+[ENGINE ECU] Value: 32.00 State: ACTIVE
+[CAN] TX -> Device:4 Protocol:4 Length:1
+
+[TASK] Running GatewayTask
+
+[GATEWAY] Packet Routed
+Device ID : 5
+Protocol  : 5
+[LOG] INFO : Packet Routed
+[MQTT] Publish -> Device:5 Protocol:5 Length:1
+[TRANSLATOR] MODBUS -> UART
+[FAULT] CRC Corrupted
+[LOG] ERROR : CRC Error
+[GATEWAY] Packet Dropped
+[LOG] ERROR : Packet Dropped
+[FAULT] CRC Corrupted
+[LOG] ERROR : CRC Error
+[GATEWAY] Packet Dropped
+[LOG] ERROR : Packet Dropped
+
+[GATEWAY] Packet Routed
+Device ID : 3
+Protocol  : 3
+[LOG] INFO : Packet Routed
+[MQTT] Publish -> Device:3 Protocol:3 Length:1
+[TRANSLATOR] SPI -> UART
+
+[GATEWAY] Packet Routed
+Device ID : 4
+Protocol  : 4
+[LOG] INFO : Packet Routed
+[MQTT] Publish -> Device:4 Protocol:4 Length:1
+[TRANSLATOR] CAN -> UART
+
+[TASK] Running DiagnosticsTask
+
+[ML-Z] SYSTEM ANOMALY DETECTED
+
+===== Diagnostics =====
+Packets Processed : 44
+Packets Dropped   : 5
+CRC Errors        : 5
+Device Errors     : 3
+Device Timeouts   : 3
+Packet Loss       : 5
+Success Rate      : 88.64 %
+Loss Rate         : 11.36 %
+Gateway Health    : 82.64 %
+Reliability Score : 82.64 %
+Failure Probability : 17.36 %
+Average Health    : 87.67 %
+Trend             : DEGRADING
+Failure State     : NORMAL
+
+========================================
+         GATEWAY DASHBOARD
+========================================
+Packets Received : 39
+Packets Routed   : 39
+Packets Dropped  : 5
+CRC Errors       : 5
+Packet Loss      : 5
+Device Errors    : 3
+Device Timeouts  : 3
+Success Rate     : 88.64 %
+Loss Rate        : 11.36 %
+Gateway Health   : 82.64 %
+========================================
+Gateway Status : WARNING
+========================================
+
+===== Device Table =====
+ID	NAME		PACKETS
+1	Temperature		8
+2	Pressure		7
+3	Battery		8
+4	Engine ECU		8
+
+===== ML Anomaly Engine =====
+Health Z-score      : -0.84
+Loss Z-score        : 0.04
+CRC Z-score         : 3.46
+Timeout Z-score     : 1.00
+Device Error Z      : 2.77
+Anomaly Score       : 8.12
+Anomaly Count       : 2
+
+===== Isolation Forest =====
+Score          : -0.0411
+Anomaly Count  : 0
+
+[TASK] Running PLCTask
+[MODBUS] TX -> Device:5 Protocol:5 Length:1
+
+[TASK] Running TemperatureTask
+[TIMEOUT] Temperature Device
+
+[TEMPERATURE] Value: 57.00 State: ACTIVE
+[UART] TX -> Device:1 Protocol:1 Length:1
+
+[TASK] Running PressureTask
+[TIMEOUT] Pressure Device
+
+[PRESSURE] Value: 75.00 State: RECOVERY
+[I2C] Write -> Device:2 Protocol:2 Length:1
+
+[TASK] Running BatteryTask
+[TIMEOUT] Battery Device
+
+[BATTERY] Value: 11.00 State: ACTIVE
+[SPI] Transfer -> Device:3 Protocol:3 Length:1
+
+[TASK] Running EngineTask
+
+[ENGINE ECU] Value: 81.00 State: RECOVERY
+[CAN] TX -> Device:4 Protocol:4 Length:1
+
+[TASK] Running GatewayTask
+
+[GATEWAY] Packet Routed
+Device ID : 5
+Protocol  : 5
+[LOG] INFO : Packet Routed
+[MQTT] Publish -> Device:5 Protocol:5 Length:1
+[TRANSLATOR] MODBUS -> UART
+
+[GATEWAY] Packet Routed
+Device ID : 1
+Protocol  : 1
+[LOG] INFO : Packet Routed
+[MQTT] Publish -> Device:1 Protocol:1 Length:1
+[TRANSLATOR] UART -> SPI
+[FAULT] CRC Corrupted
+[LOG] ERROR : CRC Error
+[GATEWAY] Packet Dropped
+[LOG] ERROR : Packet Dropped
+
+[GATEWAY] Packet Routed
+Device ID : 3
+Protocol  : 3
+[LOG] INFO : Packet Routed
+[MQTT] Publish -> Device:3 Protocol:3 Length:1
+[TRANSLATOR] SPI -> UART
+
+[GATEWAY] Packet Routed
+Device ID : 4
+Protocol  : 4
+[LOG] INFO : Packet Routed
+[MQTT] Publish -> Device:4 Protocol:4 Length:1
+[TRANSLATOR] CAN -> UART
+
+[TASK] Running DiagnosticsTask
+
+[ML-Z] SYSTEM ANOMALY DETECTED
+
+===== Diagnostics =====
+Packets Processed : 49
+Packets Dropped   : 6
+CRC Errors        : 6
+Device Errors     : 3
+Device Timeouts   : 6
+Packet Loss       : 6
+Success Rate      : 87.76 %
+Loss Rate         : 12.24 %
+Gateway Health    : 78.76 %
+Reliability Score : 78.76 %
+Failure Probability : 21.24 %
+Average Health    : 85.54 %
+Trend             : DEGRADING
+Failure State     : WARNING
+
+========================================
+         GATEWAY DASHBOARD
+========================================
+Packets Received : 43
+Packets Routed   : 43
+Packets Dropped  : 6
+CRC Errors       : 6
+Packet Loss      : 6
+Device Errors    : 3
+Device Timeouts  : 6
+Success Rate     : 87.76 %
+Loss Rate        : 12.24 %
+Gateway Health   : 78.76 %
+========================================
+Gateway Status : WARNING
+========================================
+
+===== Device Table =====
+ID	NAME		PACKETS
+1	Temperature		9
+2	Pressure		7
+3	Battery		9
+4	Engine ECU		9
+
+===== ML Anomaly Engine =====
+Health Z-score      : -1.57
+Loss Z-score        : 0.21
+CRC Z-score         : 2.94
+Timeout Z-score     : 2.91
+Device Error Z      : 1.92
+Anomaly Score       : 9.55
+Anomaly Count       : 3
+
+[IFOREST] ANOMALY DETECTED
+
+===== Isolation Forest =====
+Score          : -0.1494
+Anomaly Count  : 1
+
+[TASK] Running PLCTask
+[MODBUS] TX -> Device:5 Protocol:5 Length:1

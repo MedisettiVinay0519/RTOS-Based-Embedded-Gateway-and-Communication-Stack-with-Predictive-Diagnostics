@@ -45,3 +45,23 @@ void translate_i2c_to_uart(
 
     packet->protocol = 1;
 }
+void translate_can_to_uart(
+    Packet *packet
+)
+{
+    printf(
+        "[TRANSLATOR] CAN -> UART\n"
+    );
+
+    packet->protocol = 1;
+}
+void translate_modbus_to_uart(
+    Packet *packet
+)
+{
+    packet->protocol = 1;
+
+    printf(
+        "[TRANSLATOR] MODBUS -> UART\n"
+    );
+}

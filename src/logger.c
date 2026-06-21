@@ -19,6 +19,10 @@ void logger_init(void)
             log_file,
             "Timestamp,Level,Message\n"
         );
+
+        fflush(
+            log_file
+        );
     }
 }
 
@@ -27,31 +31,31 @@ void logger_log(
     const char *message
 )
 {
-    if(!log_file)
-    {
-        return;
-    }
-
     time_t now =
         time(NULL);
 
-    fprintf(
-        log_file,
-        "%lld,%s,%s\n",
-        (long long)now,
-        level,
-        message
-    );
-
-    fflush(
-        log_file
-    );
-
+    /* Console Log */
     printf(
         "[LOG] %s : %s\n",
         level,
         message
     );
+
+    /* CSV Log */
+    if(log_file)
+    {
+        fprintf(
+            log_file,
+            "%lld,%s,%s\n",
+            (long long)now,
+            level,
+            message
+        );
+
+        fflush(
+            log_file
+        );
+    }
 }
 
 void logger_close(void)
