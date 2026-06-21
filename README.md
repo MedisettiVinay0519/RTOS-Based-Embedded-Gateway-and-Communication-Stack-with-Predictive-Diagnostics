@@ -1,23 +1,36 @@
-# RTOS-Based Multi-Protocol Embedded Communication Gateway Simulator
+# AI-Enabled Multi-Protocol Embedded Gateway with Predictive Diagnostics
 
 ## Overview
 
-This project is a simulation of an RTOS-inspired Embedded Communication Gateway developed in C. The system models multiple embedded devices communicating through different protocols and demonstrates packet routing, protocol translation, diagnostics, fault injection, and gateway management.
+This project is a simulation of an RTOS-inspired Industrial Embedded Communication Gateway developed entirely in C. It emulates a distributed IoT/automotive communication network consisting of multiple devices communicating over heterogeneous protocols.
 
-The project was designed to emulate core concepts used in real-world embedded systems, automotive gateways, industrial controllers, and distributed IoT communication networks.
+The gateway performs packet routing, protocol translation, diagnostics, fault injection, communication monitoring, and AI-based predictive diagnostics using statistical anomaly detection and Isolation Forest machine learning.
+
+The project combines concepts from:
+
+* Embedded C Programming
+* RTOS-inspired Software Architecture
+* Communication Protocols
+* Gateway Systems
+* Diagnostics Engineering
+* Industrial IoT
+* Machine Learning
+* Predictive Maintenance
 
 ---
 
 ## Architecture
 
 ```text
-Temperature Device
-Pressure Device
-Battery Device
+Temperature Sensor
+Pressure Sensor
+Battery ECU
+Engine ECU
+PLC Device
         │
         ▼
 
-Device State Machines
+State Machines
 ├── INIT
 ├── IDLE
 ├── ACTIVE
@@ -26,18 +39,20 @@ Device State Machines
         │
         ▼
 
-Communication Protocol Layer
+Communication Layer
 ├── UART
 ├── SPI
-└── I2C
+├── I2C
+├── CAN
+└── MODBUS
         │
         ▼
 
 Packet Layer
-├── Framing
-├── Parsing
+├── Packet Framing
+├── CRC Generation
 ├── CRC Validation
-└── Checksum
+└── Parsing
         │
         ▼
 
@@ -45,8 +60,8 @@ RTOS-Inspired Core
 ├── Scheduler
 ├── Tasks
 ├── Queues
-├── Semaphores
 ├── Event Flags
+├── Semaphores
 └── Software Timers
         │
         ▼
@@ -58,17 +73,32 @@ Gateway Core
         │
         ▼
 
-Diagnostics
-├── CRC Error Detection
-├── Device Error Monitoring
-├── Device Timeout Detection
-└── Packet Loss Detection
+MQTT Publisher
         │
         ▼
 
-Logger
-├── Event Logging
-└── Gateway Dashboard
+Diagnostics Engine
+├── CRC Errors
+├── Packet Loss
+├── Device Errors
+└── Device Timeouts
+        │
+        ▼
+
+AI Predictive Diagnostics
+├── Multivariate Z-Score Detector
+└── Isolation Forest
+        │
+        ▼
+
+CSV Logging
+├── packet_log.csv
+├── gateway_log.csv
+└── feature_dataset.csv
+        │
+        ▼
+
+Python Dashboard
 ```
 
 ---
@@ -79,33 +109,19 @@ Logger
 
 * Temperature Sensor
 * Pressure Sensor
-* Battery Monitoring Unit
-
-Each device operates using a state machine:
-
-* INIT
-* IDLE
-* ACTIVE
-* ERROR
-* RECOVERY
-
----
+* Battery ECU
+* Engine ECU
+* PLC Device
 
 ### Communication Protocols
-
-Implemented protocol interfaces:
 
 * UART
 * SPI
 * I2C
-
-Each device transmits packets using its assigned communication protocol.
-
----
+* CAN
+* Modbus
 
 ### Packet Layer
-
-Features:
 
 * Packet Creation
 * Packet Framing
@@ -113,36 +129,28 @@ Features:
 * CRC Validation
 * Packet Parsing
 
----
-
 ### RTOS-Inspired Components
 
-Implemented RTOS concepts:
-
 * Cooperative Scheduler
-* Task Management
-* Message Queues
-* Binary Semaphore
+* Tasks
+* Queues
 * Event Flags
+* Semaphores
 * Software Timers
-
----
 
 ### Gateway Core
 
-The gateway performs:
-
 #### Packet Routing
 
-Routes packets from devices to the communication gateway.
+Routes packets between devices and communication interfaces.
 
 #### Device Management
 
 Maintains:
 
 * Device Registry
-* Online Status
 * Packet Statistics
+* Online Status
 
 #### Protocol Translation
 
@@ -151,171 +159,197 @@ Supports:
 * UART → SPI
 * I2C → UART
 * SPI → UART
+* CAN → UART
+* Modbus → UART
 
----
+### MQTT Gateway
+
+Publishes packets to MQTT topics for IoT integration.
 
 ### Diagnostics System
 
 Monitors:
 
 * CRC Errors
+* Packet Loss
 * Device Errors
 * Device Timeouts
-* Packet Loss
-
----
 
 ### Fault Injection
 
-Simulates communication failures by:
+Simulates:
 
-* Random CRC corruption
+* CRC corruption
 * Packet drops
+* Device failures
 * Communication faults
+* Timeout conditions
 
-This helps validate gateway robustness.
+### CSV Logging
 
----
+Generates:
 
-### Logging System
+* packet_log.csv
+* gateway_log.csv
+* feature_dataset.csv
+
+### AI-Based Predictive Diagnostics
+
+#### Multivariate Z-Score Detector
+
+Monitors:
+
+* Gateway Health
+* Packet Loss Rate
+* CRC Errors
+* Device Errors
+* Device Timeouts
+
+#### Isolation Forest
+
+Features:
+
+* Packet Loss
+* Success Rate
+* Gateway Health
+* CRC Errors
+* Device Errors
+* Device Timeouts
 
 Provides:
 
-* Event Logging
-* Error Logging
-* Gateway Statistics Dashboard
+* Anomaly Score
+* Normal/Anomaly Classification
+* Early Fault Detection
+
+### Dashboard
+
+Python-based visualization:
+
+* Gateway Health Trend
+* Packet Loss Trend
+* CRC Error Trend
+* Device Error Trend
+* Isolation Forest Score
+* Anomaly Timeline
 
 ---
 
 ## Project Structure
 
 ```text
-project/
-│
-├── include/
-│   ├── device.h
-│   ├── packet.h
-│   ├── uart.h
-│   ├── spi.h
-│   ├── i2c.h
-│   ├── queue.h
-│   ├── task.h
-│   ├── scheduler.h
-│   ├── semaphore.h
-│   ├── event.h
-│   ├── timer.h
-│   ├── gateway.h
-│   ├── device_manager.h
-│   ├── diagnostics.h
-│   ├── translator.h
-│   └── logger.h
-│
-├── src/
-│   ├── device.c
-│   ├── packet.c
-│   ├── uart.c
-│   ├── spi.c
-│   ├── i2c.c
-│   ├── queue.c
-│   ├── task.c
-│   ├── scheduler.c
-│   ├── semaphore.c
-│   ├── event.c
-│   ├── timer.c
-│   ├── gateway.c
-│   ├── device_manager.c
-│   ├── diagnostics.c
-│   ├── translator.c
-│   └── logger.c
-│
-└── main.c
+include/
+src/
+
+device.c
+packet.c
+
+uart.c
+spi.c
+i2c.c
+can.c
+modbus.c
+mqtt.c
+
+queue.c
+scheduler.c
+task.c
+event.c
+semaphore.c
+timer.c
+
+gateway.c
+translator.c
+device_manager.c
+
+diagnostics.c
+logger.c
+packet_logger.c
+
+anomaly.c
+iforest.c
+
+main.c
+
+Python
+-------
+train_iforest.py
+dashboard.py
 ```
 
 ---
 
-## Build Instructions
-
-### GCC (Windows / MinGW)
+## Build
 
 ```bash
-gcc main.c src/*.c -Iinclude -Wall -Wextra -o gateway_phase12
+gcc main.c src/*.c -Iinclude -Wall -Wextra -lm -o gateway.exe
 ```
 
-### Run
+Run:
 
 ```bash
-.\gateway_phase12.exe
+gateway.exe
 ```
 
 ---
 
-## Example Output
+## Machine Learning Pipeline
 
 ```text
-[TEMPERATURE] Value: 89.00 State: RECOVERY
-
-[TIMEOUT] Temperature Device
-
-[FAULT] CRC Corrupted
-
-[GATEWAY] Packet Dropped
-
-===== Diagnostics =====
-
-Packets Processed : 30
-Packets Dropped   : 6
-CRC Errors        : 6
-Device Errors     : 1
-Device Timeouts   : 6
-Packet Loss       : 6
-
-========================================
-         GATEWAY DASHBOARD
-========================================
-Packets Received : 24
-Packets Routed   : 24
-Packets Dropped  : 6
-CRC Errors       : 6
-Packet Loss      : 6
-Device Errors    : 1
-Device Timeouts  : 6
-========================================
+Gateway Logs
+      ↓
+Feature Extraction
+      ↓
+Isolation Forest
+      ↓
+Anomaly Detection
+      ↓
+Embedded Inference
+      ↓
+Predictive Diagnostics
 ```
 
 ---
 
 ## Learning Outcomes
 
-This project demonstrates:
-
 * Embedded C Programming
-* Communication Protocol Design
 * RTOS Concepts
+* State Machine Design
 * Packet Processing
+* Communication Protocols
 * Gateway Architecture
 * Diagnostics Engineering
 * Fault Injection Testing
-* State Machine Design
-* Software Architecture for Embedded Systems
+* Industrial IoT
+* MQTT Communication
+* CSV Logging
+* Embedded AI
+* Statistical Anomaly Detection
+* Isolation Forest
+* Predictive Maintenance
+* Data Visualization
 
 ---
 
 ## Future Improvements
 
-* CAN Bus Simulation
-* Modbus Protocol Support
-* MQTT Gateway Integration
-* Multithreading using FreeRTOS
-* Persistent CSV Logging
-* Real-Time Dashboard
-* Predictive Maintenance Analytics
-* TCP/IP Communication Layer
+* TCP/IP Communication Stack
+* Ethernet Interface
+* FreeRTOS Porting
+* STM32 Hardware Deployment
+* Edge AI Optimization
+* Lightweight TinyML Models
+* Web Dashboard
+* Cloud Integration
+* Digital Twin Framework
 
 ---
 
 ## Author
 
-Vinay Medisetti
+**Vinay Medisetti**
 
 Electronics and Communication Engineering
 
+National Institute of Technology Karnataka (NITK)
