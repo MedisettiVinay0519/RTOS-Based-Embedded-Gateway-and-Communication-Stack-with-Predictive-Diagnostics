@@ -29,6 +29,7 @@
 #include "packet_logger.h"
 #include "anomaly.h"
 #include "iforest.h"
+#include "tcp.h"
 /* ===================================================== */
 /* Global Objects                                        */
 /* ===================================================== */
@@ -53,6 +54,7 @@ SoftwareTimer pressure_timer;
 SoftwareTimer battery_timer;
 ModbusSlave modbus_slave;
 Device plc;
+Device network_node;
 AnomalyEngine anomaly_engine;
 IForestEngine iforest_engine;
 /* ===================================================== */
@@ -426,6 +428,7 @@ void gateway_task(void)
                     "Packet Routed"
                 );
                 mqtt_publish(&packet);
+                tcp_send(&packet);
                 packet_logger_log(&packet);            
                 if(
                     packet.protocol == 1
@@ -465,6 +468,14 @@ void gateway_task(void)
 {
     translate_modbus_to_uart(
         &packet
+    );
+}
+else if(
+    packet.protocol == 6
+)
+{
+    printf(
+        "[TRANSLATOR] TCP/IP -> UART\n"
     );
 }
             }
@@ -575,6 +586,49 @@ void plc_task(void)
         &packet_event
     );
 }
+void network_task(void)
+{
+    device_update(
+        &network_node
+    );
+
+    printf(
+        "\n[NETWORK NODE] Value: %.2f State: %s\n",
+        network_node.value,
+        device_state_to_string(
+            network_node.state
+        )
+    );
+
+    unsigned char data[1];
+
+    data[0] =
+        (unsigned char)
+        network_node.value;
+
+    Packet packet;
+
+    packet_create(
+        &packet,
+        network_node.device_id,
+        6,
+        data,
+        1
+    );
+
+    tcp_send(
+        &packet
+    );
+
+    queue_send(
+        &queue,
+        &packet
+    );
+
+    event_set(
+        &packet_event
+    );
+}
 
 /* ===================================================== */
 /* Main                                                  */
@@ -593,6 +647,7 @@ int main(void)
     can_init();
     modbus_init(
     &modbus_slave );
+    tcp_init();
     mqtt_init();
     packet_logger_init();
     anomaly_init(
@@ -677,6 +732,11 @@ device_init(
     5,
     "PLC"
 );
+device_init(
+    &network_node,
+    6,
+    "Network Node"
+);
 
     Scheduler scheduler;
 
@@ -710,6 +770,18 @@ device_manager_add(
     "Engine ECU"
 );
 
+device_manager_add(
+    &device_manager,
+    5,
+    "PLC"
+);
+
+device_manager_add(
+    &device_manager,
+    6,
+    "Network Node"
+);
+
     Task t1;
     Task t2;
     Task t3;
@@ -717,6 +789,7 @@ device_manager_add(
     Task t5;
     Task t6;
     Task t7;
+    Task t8;
 
     task_create(
         &t1,
@@ -764,6 +837,12 @@ device_manager_add(
     "PLCTask",
     plc_task
 );
+task_create(
+    &t8,
+    8,
+    "NetworkTask",
+    network_task
+);
 
     scheduler_add_task(
         &scheduler,
@@ -798,6 +877,10 @@ device_manager_add(
 scheduler_add_task(
     &scheduler,
     t7
+);
+scheduler_add_task(
+    &scheduler,
+    t8
 );
 
     for(
