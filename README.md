@@ -1,121 +1,97 @@
-# Multi-Protocol Embedded Gateway with Predictive Diagnostics
+# RTOS-Based Embedded Gateway and Communication Stack with Predictive Diagnostics
 
 ## Overview
 
-This project is an RTOS-inspired Industrial Embedded Communication Gateway developed entirely in C. The system simulates a distributed communication network consisting of multiple devices communicating over heterogeneous protocols.
+This project is a complete RTOS-inspired Embedded Communication Gateway Simulator developed in C. It models multiple embedded devices communicating through different protocols and demonstrates packet routing, protocol translation, diagnostics, fault injection, TCP/IP communication, MQTT publishing, and predictive anomaly detection.
 
-The gateway performs packet routing, protocol translation, diagnostics, fault injection, communication monitoring, CSV logging, and predictive diagnostics using statistical anomaly detection and Isolation Forest-based fault analysis.
-
-The project combines concepts from:
-
-* Embedded C Programming
-* RTOS-Inspired Software Architecture
-* Communication Protocols
-* Gateway Systems
-* Diagnostics Engineering
-* Industrial IoT
-* Predictive Maintenance
-* Data Logging and Visualization
+The system emulates architectures used in automotive ECUs, industrial controllers, IoT gateways, and distributed embedded communication networks.
 
 ---
 
-## Architecture
+# System Architecture
 
 ```text
-Temperature Sensor
-Pressure Sensor
-Battery ECU
-Engine ECU
-PLC Device
+Devices
+│
+├── Temperature Sensor
+├── Pressure Sensor
+├── Battery Monitoring Unit
+├── Engine ECU
+├── PLC
+└── Network Node
         │
         ▼
-
-State Machines
-├── INIT
-├── IDLE
-├── ACTIVE
-├── ERROR
-└── RECOVERY
-        │
-        ▼
-
-Communication Layer
+Communication Protocol Layer
+│
 ├── UART
 ├── SPI
 ├── I2C
 ├── CAN
-└── MODBUS
+├── Modbus
+└── TCP/IP
         │
         ▼
-
 Packet Layer
-├── Packet Framing
+│
+├── Packet Creation
 ├── CRC Generation
 ├── CRC Validation
 └── Packet Parsing
         │
         ▼
-
-RTOS-Inspired Core
-├── Scheduler
+RTOS-Inspired Layer
+│
+├── Cooperative Scheduler
 ├── Tasks
-├── Queues
+├── Queue
 ├── Event Flags
-├── Semaphores
 └── Software Timers
         │
         ▼
-
 Gateway Core
+│
 ├── Packet Routing
 ├── Device Management
-└── Protocol Translation
+├── Protocol Translation
+├── MQTT Publishing
+└── TCP/IP Transmission
         │
         ▼
-
-MQTT Publisher
-        │
-        ▼
-
-Diagnostics Engine
-├── CRC Error Monitoring
+Diagnostics Layer
+│
+├── CRC Error Detection
 ├── Packet Loss Monitoring
-├── Device Error Monitoring
-└── Device Timeout Monitoring
+├── Device Error Detection
+├── Timeout Detection
+├── Gateway Health Analysis
+└── Trend Analysis
         │
         ▼
-
+Fault Injection
+        │
+        ▼
 Predictive Diagnostics
-├── Multivariate Z-Score Detector
-└── Isolation Forest
-        │
-        ▼
-
-CSV Logging
-├── packet_log.csv
-├── gateway_log.csv
-└── feature_dataset.csv
-        │
-        ▼
-
-Python Dashboard
+│
+├── Z-Score Anomaly Detection
+└── Isolation Forest Anomaly Detection
 ```
 
 ---
 
-## Features
+# Features
 
-### Device Simulation
+## Device Simulation
+
+Simulated devices:
 
 * Temperature Sensor
 * Pressure Sensor
-* Battery ECU
+* Battery Monitoring Unit
 * Engine ECU
-* PLC Device
+* PLC
+* Network Node
 
-### Device State Machine
-
-Each device operates using:
+Each device operates using a state machine:
 
 * INIT
 * IDLE
@@ -123,7 +99,9 @@ Each device operates using:
 * ERROR
 * RECOVERY
 
-### Communication Protocols
+---
+
+## Communication Protocols
 
 Implemented protocol interfaces:
 
@@ -132,218 +110,254 @@ Implemented protocol interfaces:
 * I2C
 * CAN
 * Modbus
+* TCP/IP
 
-### Packet Layer
+---
+
+## Packet Layer
 
 Supports:
 
-* Packet Creation
-* Packet Framing
-* CRC Generation
-* CRC Validation
-* Packet Parsing
+* Packet creation
+* Framing
+* Parsing
+* CRC generation
+* CRC validation
 
-### RTOS-Inspired Components
+---
 
-Implemented concepts:
+## RTOS-Inspired Components
+
+Implemented:
 
 * Cooperative Scheduler
 * Task Management
-* Message Queues
-* Binary Semaphores
+* Queue
 * Event Flags
 * Software Timers
 
-### Gateway Core
+---
 
-#### Packet Routing
+## Gateway Core
 
-Routes packets from multiple devices.
+### Packet Routing
 
-#### Device Management
+Routes packets from devices to the gateway.
+
+### Device Management
 
 Maintains:
 
-* Device Registry
-* Online Status
-* Packet Statistics
+* Device registry
+* Packet statistics
+* Online devices
 
-#### Protocol Translation
+### Protocol Translation
 
 Supports:
 
 * UART → SPI
-* I2C → UART
 * SPI → UART
+* I2C → UART
 * CAN → UART
-* MODBUS → UART
+* Modbus → UART
+* TCP/IP → UART
 
-### MQTT Gateway
+### MQTT Publishing
 
-Publishes packets to MQTT topics.
+Publishes routed packets.
 
-### Diagnostics System
+### TCP/IP Communication
+
+Supports network transmission between gateway nodes.
+
+---
+
+## Diagnostics System
 
 Monitors:
 
-* CRC Errors
-* Device Errors
-* Device Timeouts
-* Packet Loss
+* Packets processed
+* Packet loss
+* CRC errors
+* Device errors
+* Device timeouts
+* Gateway health
+* Reliability score
+* Failure probability
+* Trend analysis
 
-### Fault Injection
+---
+
+## Fault Injection
 
 Simulates:
 
 * CRC corruption
 * Packet drops
+* Device failures
 * Communication faults
 * Timeout conditions
-* Device failures
-
-### CSV Logging
-
-Generates:
-
-* packet_log.csv
-* gateway_log.csv
-* feature_dataset.csv
-
-### Predictive Diagnostics
-
-#### Multivariate Z-Score Detector
-
-Uses:
-
-* Gateway Health
-* Packet Loss Rate
-* CRC Errors
-* Device Errors
-* Device Timeouts
-
-#### Isolation Forest
-
-Uses:
-
-* Packet Loss
-* Success Rate
-* Gateway Health
-* CRC Errors
-* Device Errors
-* Device Timeouts
-
-Provides:
-
-* Anomaly Score
-* Normal / Anomaly Classification
-* Early Fault Detection
-
-### Dashboard
-
-Python-based visualization:
-
-* Gateway Health Trend
-* Packet Loss Trend
-* CRC Error Trend
-* Device Error Trend
-* Isolation Forest Score Trend
-* Anomaly Timeline
 
 ---
 
-## Project Structure
+## Gateway Dashboard
+
+Displays:
+
+* Packets routed
+* Packet drops
+* CRC errors
+* Success rate
+* Gateway health
+* Device statistics
+
+---
+
+# Predictive Diagnostics
+
+## Statistical Anomaly Detection
+
+Implemented using Z-score analysis.
+
+Features monitored:
+
+* Gateway health
+* Packet loss
+* CRC errors
+* Device errors
+* Timeout events
+
+System raises:
 
 ```text
-project/
+[ML-Z] SYSTEM ANOMALY DETECTED
+```
+
+when abnormal operating conditions are detected.
+
+---
+
+## Isolation Forest Anomaly Detection
+
+Offline training performed using packet_log.csv and gateway_log.csv.
+
+Isolation Forest identifies abnormal gateway behavior and outputs:
+
+```text
+[IFOREST] ANOMALY DETECTED
+```
+
+along with anomaly scores and anomaly counts.
+
+---
+
+# Project Structure
+
+```text
+project
 │
-├── include/
-│
-├── src/
-│
+├── include
+├── src
 ├── main.c
-│
 ├── packet_log.csv
 ├── gateway_log.csv
-├── feature_dataset.csv
-│
 ├── train_iforest.py
-└── dashboard.py
+├── anomaly.c
+├── anomaly.h
+├── tcpip.c
+├── tcpip.h
+└── README.md
 ```
 
 ---
 
-## Build
-
-### GCC (Windows / MinGW)
-
-```bash
-gcc main.c src/*.c -Iinclude -Wall -Wextra -lm -o gateway.exe
-```
-
-### Run
-
-```bash
-gateway.exe
-```
-
----
-
-## Machine Learning Pipeline
+# Example Output
 
 ```text
-Gateway Logs
-      ↓
-Feature Extraction
-      ↓
-Isolation Forest
-      ↓
-Anomaly Detection
-      ↓
-Predictive Diagnostics
-      ↓
-Dashboard Visualization
+[TCP/IP] Initialized
+[MQTT] Initialized
+
+[GATEWAY] Packet Routed
+
+[FAULT] CRC Corrupted
+
+===== Diagnostics =====
+
+Packets Processed : 58
+Packets Dropped   : 9
+CRC Errors        : 9
+Device Errors     : 5
+Device Timeouts   : 6
+
+Gateway Health    : 73.48 %
+
+[ML-Z] SYSTEM ANOMALY DETECTED
+
+===== Isolation Forest =====
+
+Score : -0.3292
+Anomaly Count : 9
 ```
 
 ---
 
-## Learning Outcomes
+# Technologies Used
+
+* C Programming
+* Embedded Systems
+* RTOS Concepts
+* UART
+* SPI
+* I2C
+* CAN
+* Modbus
+* TCP/IP
+* MQTT
+* Packet Routing
+* CRC Validation
+* Fault Injection
+* Diagnostics Engineering
+* Statistical Anomaly Detection
+* Isolation Forest
+
+---
+
+# Learning Outcomes
 
 This project demonstrates:
 
 * Embedded C Programming
 * RTOS Concepts
-* Communication Protocol Design
+* State Machines
+* Communication Protocols
 * Packet Processing
 * Gateway Architecture
 * Diagnostics Engineering
 * Fault Injection Testing
-* State Machine Design
-* Industrial IoT Concepts
-* MQTT Communication
-* Statistical Anomaly Detection
-* Isolation Forest
-* Predictive Maintenance
-* Data Logging and Visualization
+* Predictive Diagnostics
+* Statistical Machine Learning
+* Software Architecture for Embedded Systems
 
 ---
 
-## Future Improvements
+# Future Improvements
 
-* TCP/IP Communication Layer
-* Ethernet Interface
-* FreeRTOS Porting
+* FreeRTOS Integration
 * STM32 Hardware Deployment
-* TinyML Models
+* Socket-Based TCP Communication
+* Real MQTT Broker Integration
+* SQLite Data Logging
 * Web Dashboard
-* Cloud Integration
-* Digital Twin Framework
+* Grafana Visualization
+* CAN FD Support
 
 ---
 
-## Author
+# Author
 
-**Vinay Medisetti**
+Vinay Medisetti
 
 Electronics and Communication Engineering
 
-National Institute of Technology Karnataka (NITK)
+National Institute of Technology Karnataka
